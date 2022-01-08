@@ -1,0 +1,30 @@
+<mat-toolbar color="primary">
+  <button mat-icon-button>
+    <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
+  </button>
+  <span>Notebook</span>
+  <span class="spacer"></span>
+  <button mat-icon-button>
+    <mat-icon>exit_to_app</mat-icon>
+  </button>
+  <button mat-button>
+    <span>Logout</span>
+  </button>
+</mat-toolbar>
+
+<mat-sidenav-container class="container">
+  <mat-sidenav #sidenav mode="side" opened>
+    <!-- side navigation -->
+    <mat-nav-list>
+      <a mat-list-item routerLink="/note-list" routerLinkActive="active">Notes</a>
+      <a mat-list-item routerLink="/note-editor" routerLinkActive="active">Edit note</a>
+      <mat-list-item>Labels</mat-list-item>
+    </mat-nav-list>
+    <!-- /side navigation -->
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <main>
+      <router-outlet></router-outlet>
+    </main>
+  </mat-sidenav-content>
+</mat-sidenav-container>
