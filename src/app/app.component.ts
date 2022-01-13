@@ -6,6 +6,17 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'notebook';
+  title = 'Notebook';
+
+  open (even: any) {
+    console.log("opened");
+  }
+
+  close(event: any) {
+    console.log("closed");
+  }
+
 }
+
+
 

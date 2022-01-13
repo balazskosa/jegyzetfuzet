@@ -14,6 +14,10 @@ import { NoteEditorComponent } from './note-editor/note-editor.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from "@angular/material/input";
 import { AppRoutingModule } from './app-routing.module';
+import {FormsModule} from "@angular/forms";
+import {MatCardModule} from "@angular/material/card";
+import {NotesService} from "./service/notes.service";
+
 
 @NgModule({
   declarations: [
@@ -33,8 +37,12 @@ import { AppRoutingModule } from './app-routing.module';
     MatFormFieldModule,
     MatInputModule,
     AppRoutingModule,
+    FormsModule,
+    MatCardModule,
   ],
-  providers: [],
+  providers: [
+    NotesService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

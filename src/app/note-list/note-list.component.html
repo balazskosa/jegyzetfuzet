@@ -1,25 +1,22 @@
-<mat-accordion>
-  <mat-expansion-panel hideToggle>
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-        Note1
-      </mat-panel-title>
-    </mat-expansion-panel-header>
-    <p>Note1: This is the primary content of the panel.</p>
-  </mat-expansion-panel>
-</mat-accordion>
 
-<mat-accordion>
-  <mat-expansion-panel hideToggle>
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-        Note2
-      </mat-panel-title>
-    </mat-expansion-panel-header>
-    <p>Note2: This is the primary content of the panel.</p>
-  </mat-expansion-panel>
-</mat-accordion>
+
+
+
+<ng-container  *ngFor="let note of notes">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>{{ note.title }}</mat-card-title>
+      <mat-card-subtitle>{{ note.title }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p>
+        {{ note.description }}
+      </p>
+    </mat-card-content>
+  </mat-card>
+</ng-container>
+
+
 <div class="button-container">
   <button mat-raised-button color="primary" routerLink="/note-editor">create note</button>
 </div>
-
