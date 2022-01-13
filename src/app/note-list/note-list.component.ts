@@ -18,4 +18,7 @@ export class NoteListComponent implements OnInit {
     this.notes = await this.service.getNotes();
   }
 
+  log() {
+    console.log("clicked");
+  }
 }

@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NoteEditorComponent implements OnInit {
 
+  title: string = "Edit note";
+
   constructor() { }
 
   ngOnInit(): void {

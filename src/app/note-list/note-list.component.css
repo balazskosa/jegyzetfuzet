@@ -10,4 +10,11 @@
   margin: 8px auto;
 }
 
+.mat-card-actions {
+  display: flex;
+  flex-direction: row-reverse;
+}
 
+.mat-icon {
+  color: crimson;
+}

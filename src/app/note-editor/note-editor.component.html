@@ -1,4 +1,6 @@
-<h1>Edit note </h1>
+<div class="title-editor">
+  {{ title }}
+</div>
 <form>
   <mat-form-field appearance="outline">
     <mat-label>Title</mat-label>
@@ -9,7 +11,8 @@
     <mat-label>Description</mat-label>
     <textarea matInput placeholder="write something..."></textarea>
   </mat-form-field>
-  <div>
+  <div class="button-container">
     <button mat-raised-button color="primary">Save</button>
+    <button mat-raised-button color="primary">Cancel</button>
   </div>
 </form>

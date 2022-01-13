@@ -1,9 +1,5 @@
-
-
-
-
 <ng-container  *ngFor="let note of notes">
-  <mat-card>
+  <mat-card (click)="log()">
     <mat-card-header>
       <mat-card-title>{{ note.title }}</mat-card-title>
       <mat-card-subtitle>{{ note.title }}</mat-card-subtitle>
@@ -13,8 +9,17 @@
         {{ note.description }}
       </p>
     </mat-card-content>
+    <mat-card-actions>
+      <button mat-button>
+        <mat-icon>clear</mat-icon>
+      </button>
+      <button mat-icon-button>
+        <mat-icon>edit</mat-icon>
+      </button>
+    </mat-card-actions>
   </mat-card>
 </ng-container>
+
 
 
 <div class="button-container">
