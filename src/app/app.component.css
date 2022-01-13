@@ -2,6 +2,9 @@
   flex: 1 1 auto;
 }
 
+.mat-toolbar {
+  background: linear-gradient(to right, darkorange, darkslategray);
+}
 .container {
   position: absolute;
   top: 64px;
@@ -12,10 +15,11 @@
 
 .mat-sidenav {
   width: 240px;
+  background: linear-gradient(to left, darkseagreen, ghostwhite);
 }
 
 .mat-sidenav-content {
-  background: cadetblue;
+  background: linear-gradient(to right, darkseagreen, ghostwhite);
 }
 
 main {
@@ -23,9 +27,6 @@ main {
 }
 
 a.active {
-  color: crimson;
+  color: darkseagreen;
 }
 
-.mat-sidenav-container {
-  background: blue;
-}
