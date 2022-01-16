@@ -1,8 +1,6 @@
-.button-container2 {
+.button-container {
   max-width: 625px;
   margin: 0 auto;
-  overflow: hidden;
-
 }
 
 .mat-raised-button {
@@ -26,5 +24,5 @@
 }
 
 .mat-icon {
-  color: crimson;
+  color: black;
 }

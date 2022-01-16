@@ -14,7 +14,7 @@ import { NoteEditorComponent } from './note-editor/note-editor.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from "@angular/material/input";
 import { AppRoutingModule } from './app-routing.module';
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatCardModule} from "@angular/material/card";
 import {NotesService} from "./service/notes.service";
 
@@ -23,7 +23,7 @@ import {NotesService} from "./service/notes.service";
   declarations: [
     AppComponent,
     NoteListComponent,
-    NoteEditorComponent
+    NoteEditorComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,6 +39,7 @@ import {NotesService} from "./service/notes.service";
     AppRoutingModule,
     FormsModule,
     MatCardModule,
+    ReactiveFormsModule,
   ],
   providers: [
     NotesService,

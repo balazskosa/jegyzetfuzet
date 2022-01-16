@@ -1,8 +1,10 @@
-<div class="button-container2">
-  <button mat-raised-button color="primary" routerLink="/note-editor">+ Add</button>
+<div class="button-container">
+  <button mat-raised-button color="primary" routerLink="/note-editor">
+    <mat-icon>note_add</mat-icon>
+  </button>
 </div>
 
-<ng-container  *ngFor="let note of notes">
+<ng-container *ngFor="let note of notes">
   <mat-card (click)="log()">
     <mat-card-header>
       <mat-card-title>{{ note.title }}</mat-card-title>
