@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {Note} from "../core/note";
+import {Observable} from "rxjs";
 
 @Injectable()
 export class NotesService {
@@ -47,11 +48,41 @@ export class NotesService {
     },
   ]
 
+  private _currentId: number = 100;
 
 
   constructor() { }
 
   async getNotes(): Promise<Note[]> {
     return this.notes;
+  }
+
+  async getNote(id: number): Promise<Note | undefined> {
+    return this.notes.find(
+      (note) => note.id === id
+    );
+  }
+
+  async createNote(note: Note): Promise<Note> {
+    note.id = this._currentId;
+    this._currentId ++;
+    this.notes.push(note);
+    return note;
+  }
+
+  async editNote(noteId: number, note: Note): Promise<Note> {
+    const noteIndex = this.notes.findIndex((note) => note.id === noteId);
+
+    const modifiedNote = {
+      ...this.notes[noteIndex],
+      ...note,
+    };
+    this.notes.splice(noteIndex, 1, modifiedNote);
+    return modifiedNote;
+  }
+
+  async deleteNote(note: Note): Promise<void> {
+    const noteIndex = this.notes.findIndex((n) => n.id === note.id);
+    if(noteIndex != -1)  this.notes.splice(noteIndex,1);
   }
 }

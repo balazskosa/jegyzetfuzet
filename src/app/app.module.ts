@@ -17,6 +17,9 @@ import { AppRoutingModule } from './app-routing.module';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatCardModule} from "@angular/material/card";
 import {NotesService} from "./service/notes.service";
+import { NoteSummaryComponent } from './note-summary/note-summary.component';
+import { NoteDetailsComponent } from './note-details/note-details.component';
+import {MatDialogModule} from "@angular/material/dialog";
 
 
 @NgModule({
@@ -24,23 +27,26 @@ import {NotesService} from "./service/notes.service";
     AppComponent,
     NoteListComponent,
     NoteEditorComponent,
+    NoteSummaryComponent,
+    NoteDetailsComponent,
   ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    MatToolbarModule,
-    MatIconModule,
-    MatButtonModule,
-    MatSidenavModule,
-    MatExpansionModule,
-    MatListModule,
-    MatFormFieldModule,
-    MatInputModule,
-    AppRoutingModule,
-    FormsModule,
-    MatCardModule,
-    ReactiveFormsModule,
-  ],
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        MatToolbarModule,
+        MatIconModule,
+        MatButtonModule,
+        MatSidenavModule,
+        MatExpansionModule,
+        MatListModule,
+        MatFormFieldModule,
+        MatInputModule,
+        AppRoutingModule,
+        FormsModule,
+        MatCardModule,
+        ReactiveFormsModule,
+        MatDialogModule,
+    ],
   providers: [
     NotesService,
   ],

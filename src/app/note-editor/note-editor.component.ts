@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Note} from "../core/note";
 import {FormBuilder, FormControl, FormGroup, NgForm, Validators} from "@angular/forms";
+import {NotesService} from "../service/notes.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-note-editor',
@@ -10,6 +12,7 @@ import {FormBuilder, FormControl, FormGroup, NgForm, Validators} from "@angular/
 export class NoteEditorComponent implements OnInit {
 
   pageTitle: string = "Edit note";
+  note?: Note;
 
   noteForm: FormGroup = this.fb.group({
     title: ['', Validators.required],
@@ -17,7 +20,10 @@ export class NoteEditorComponent implements OnInit {
   });
 
 
-  constructor(private fb: FormBuilder) { }
+  constructor(
+    private route:Router,
+    private service: NotesService,
+    private fb: FormBuilder) { }
 
   ngOnInit(): void {
   }
@@ -30,12 +36,12 @@ export class NoteEditorComponent implements OnInit {
     return this.noteForm.get('description') as FormControl;
   }
 
-  submit() {
-    this.noteForm.value;
-    if (!this.noteForm.valid) {
-      return;
+  async submit() {
+    if (this.noteForm.valid) {
+      this.note = {title: this.noteForm.value.title, description: this.noteForm.value.description};
+      await this.service.createNote(this.note);
+      await this.route.navigate(["/notes"]);
     }
-
+    return;
   }
-
 }

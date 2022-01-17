@@ -21,4 +21,8 @@ export class NoteListComponent implements OnInit {
   log() {
     console.log("clicked");
   }
+
+  async onDelete(note: Note) {
+    await this.service.deleteNote(note);
+  }
 }

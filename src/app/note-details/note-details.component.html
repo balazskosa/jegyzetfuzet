@@ -1,0 +1,16 @@
+<ng-container *ngIf="note; else noteMissing">
+  <div>
+    <p>Id: {{ note.id }}</p>
+  </div>
+  <div>
+    <h1>Title: {{ note.title }}</h1>
+  </div>
+  <div>
+    <p>Description: {{ note.description }}</p>
+  </div>
+
+</ng-container>
+
+<ng-template #noteMissing>
+  <h1>Note doesn't exist.</h1>
+</ng-template>
