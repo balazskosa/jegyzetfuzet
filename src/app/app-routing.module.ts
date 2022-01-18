@@ -7,6 +7,7 @@ import {NoteDetailsComponent} from "./note-details/note-details.component";
 const routes: Routes = [
   {path: 'notes', component: NoteListComponent},
   {path: 'note/:noteId', component: NoteDetailsComponent},
+  {path: 'note-editor/:noteId', component: NoteEditorComponent},
   {path: 'note-editor', component: NoteEditorComponent},
   {path: '**', redirectTo: "notes"}
 ];

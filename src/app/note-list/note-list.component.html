@@ -17,14 +17,14 @@
       </p>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-button>
-        <mat-icon (click)="onDelete(note)">clear</mat-icon>
+      <button mat-button (click)="onDelete(note)" >
+        <mat-icon >clear</mat-icon>
       </button>
-      <button mat-icon-button>
+      <button mat-icon-button [routerLink]="['/note-editor', note.id]">
         <mat-icon >edit</mat-icon>
       </button>
-      <button mat-icon-button>
-        <mat-icon [routerLink]="['/note', note.id]">details</mat-icon>
+      <button mat-icon-button [routerLink]="['/note', note.id]">
+        <mat-icon>details</mat-icon>
       </button>
     </mat-card-actions>
   </mat-card>

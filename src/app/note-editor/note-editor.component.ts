@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {Note} from "../core/note";
 import {FormBuilder, FormControl, FormGroup, NgForm, Validators} from "@angular/forms";
 import {NotesService} from "../service/notes.service";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-note-editor',
@@ -11,7 +11,7 @@ import {Router} from "@angular/router";
 })
 export class NoteEditorComponent implements OnInit {
 
-  pageTitle: string = "Edit note";
+  pageTitle: string = "Create note";
   note?: Note;
 
   noteForm: FormGroup = this.fb.group({
@@ -21,11 +21,18 @@ export class NoteEditorComponent implements OnInit {
 
 
   constructor(
+    private currentRoute: ActivatedRoute,
     private route:Router,
     private service: NotesService,
     private fb: FormBuilder) { }
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
+    const noteId = this.currentRoute.snapshot.paramMap.get('noteId');
+    if (noteId) {
+      this.note = await this.service.getNote(parseInt(noteId));
+      this.noteForm.setValue({title: this.note?.title, description: this.note?.description});
+      this.pageTitle = "Edit note";
+    }
   }
 
   get title(): FormControl {
@@ -37,11 +44,19 @@ export class NoteEditorComponent implements OnInit {
   }
 
   async submit() {
-    if (this.noteForm.valid) {
-      this.note = {title: this.noteForm.value.title, description: this.noteForm.value.description};
-      await this.service.createNote(this.note);
-      await this.route.navigate(["/notes"]);
+    if (!this.noteForm.valid) {
+      return;
     }
-    return;
+    this.note = <Note> {...this.note, ...this.noteForm.value };
+
+    if(this.note.id) {
+      console.log(this.note);
+      await this.service.editNote(this.note.id as number, this.note);
+    } else {
+      await this.service.createNote(this.note);
+    }
+
+    await this.route.navigate(["/notes"]);
   }
+
 }
