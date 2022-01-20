@@ -27,7 +27,8 @@ export class NoteEditorComponent implements OnInit {
     private currentRoute: ActivatedRoute,
     private route: Router,
     private service: NotesService,
-    private fb: FormBuilder) {
+    private fb: FormBuilder)
+  {
         this.setImportance();
   }
 

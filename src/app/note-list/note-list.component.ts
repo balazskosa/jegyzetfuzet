@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {NotesService} from "../service/notes.service";
 import {Note} from "../core/note";
 import {FormControl} from "@angular/forms";
-import {TooltipPosition} from "@angular/material/tooltip";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-note-list',
@@ -11,18 +11,31 @@ import {TooltipPosition} from "@angular/material/tooltip";
 })
 export class NoteListComponent implements OnInit {
 
-  positionOptions: TooltipPosition[] = ['below', 'above', 'left', 'right'];
-  position = new FormControl(this.positionOptions[0]);
+  position = new FormControl('below');
+  visibility: boolean = true;
 
   notes: Note[] = [];
-  constructor(private service: NotesService) {
+
+  constructor(
+    private route: Router,
+    private currentRoute: ActivatedRoute,
+    private service: NotesService) {
   }
 
   async ngOnInit(): Promise<void> {
+    const howImportant = this.currentRoute.snapshot.paramMap.get('howImportant');
+    console.log(howImportant);
+    if (howImportant) {
+      this.notes = await this.service.getNotesByImportance(howImportant.toUpperCase());
+      this.visibility = false;
+      return;
+    }
     this.notes = await this.service.getNotes();
   }
 
   async onDelete(note: Note) {
     await this.service.deleteNote(note);
+    await this.route.navigate(['/notes']);
   }
+
 }

@@ -25,6 +25,8 @@ import {DescriptionPipe} from "./pipe/description.pipe";
 import {MatButtonToggleModule} from "@angular/material/button-toggle";
 import {MatRadioModule} from "@angular/material/radio";
 import {MatTooltipModule} from "@angular/material/tooltip";
+import {LabelListComponent} from './login/label-list/label-list.component';
+import {MatTreeModule} from "@angular/material/tree";
 
 @NgModule({
   declarations: [
@@ -35,27 +37,29 @@ import {MatTooltipModule} from "@angular/material/tooltip";
     NoteDetailsComponent,
     LoginComponent,
     DescriptionPipe,
+    LabelListComponent,
   ],
-    imports: [
-        BrowserModule,
-        BrowserAnimationsModule,
-        MatToolbarModule,
-        MatIconModule,
-        MatButtonModule,
-        MatSidenavModule,
-        MatExpansionModule,
-        MatListModule,
-        MatFormFieldModule,
-        MatInputModule,
-        AppRoutingModule,
-        FormsModule,
-        MatCardModule,
-        ReactiveFormsModule,
-        MatDialogModule,
-        MatButtonToggleModule,
-        MatRadioModule,
-        MatTooltipModule,
-    ],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatExpansionModule,
+    MatListModule,
+    MatFormFieldModule,
+    MatInputModule,
+    AppRoutingModule,
+    FormsModule,
+    MatCardModule,
+    ReactiveFormsModule,
+    MatDialogModule,
+    MatButtonToggleModule,
+    MatRadioModule,
+    MatTooltipModule,
+    MatTreeModule,
+  ],
   providers: [
     NotesService,
   ],

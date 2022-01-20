@@ -82,6 +82,10 @@ export class NotesService {
     );
   }
 
+  async getNotesByImportance(howImportant: string): Promise<Note[]> {
+    return this.notes.filter(note => note.importance == howImportant);
+  }
+
   async createNote(note: Note): Promise<Note> {
     note.id = this._currentId;
     this._currentId ++;
