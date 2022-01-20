@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import {Note} from "../core/note";
-import {Observable} from "rxjs";
 
 @Injectable()
 export class NotesService {
@@ -8,7 +7,15 @@ export class NotesService {
     {
       id: 1,
       title: "note1",
-      description: "Description1",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit." +
+        " Mauris ultricies imperdiet orci. Mauris auctor tortor id leo mollis lobortis." +
+        " Curabitur blandit massa id nulla eleifend, sed iaculis purus commodo. Quisque cursus metus odio," +
+        " at pellentesque orci venenatis eget. Vestibulum quis sapien augue. Suspendisse faucibus velit purus," +
+        " ut aliquet nulla sodales vitae. Phasellus sit amet elit pulvinar, aliquet libero vitae, mattis mi." +
+        " Proin ut tincidunt arcu. Praesent mattis felis id tincidunt posuere. Mauris feugiat tristique ligula" +
+        " sit amet maximus. Nam rutrum ultricies mi in sollicitudin. Curabitur id vulputate orci. Sed eu lacus" +
+        " sit amet magna ornare mollis. Pellentesque dapibus mattis" +
+        " ipsum, sit amet tincidunt risus lobortis ornare. Quisque laoreet tellus eu imperdiet feugiat.",
 
     },
     {
@@ -19,7 +26,11 @@ export class NotesService {
     {
       id: 3,
       title: "note3",
-      description: "Description3",
+      description: "Nullam gravida massa id lacus molestie, eu consectetur tellus luctus. Curabitur fringilla" +
+        " eu magna at pretium. Pellentesque ac nisl ut dui efficitur ullamcorper. Donec interdum lorem molestie" +
+        " sem placerat consectetur. Etiam mattis nunc vitae est luctus pulvinar. Pellentesque tincidunt nec dolor " +
+        "eget molestie. Nulla elementum ante porta orci porta, nec feugiat augue hendrerit. Sed dignissim" +
+        " turpis eu augue vestibulum, vitae pretium massa varius. Maecenas et dui at magna rhoncus pharetra.",
     },
     {
       id: 4,
@@ -66,7 +77,7 @@ export class NotesService {
   async createNote(note: Note): Promise<Note> {
     note.id = this._currentId;
     this._currentId ++;
-    this.notes.push(note);
+    this.notes.splice(0, 0, note);
     return note;
   }
 

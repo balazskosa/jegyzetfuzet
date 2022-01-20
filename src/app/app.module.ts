@@ -21,6 +21,7 @@ import {NoteSummaryComponent} from './note-summary/note-summary.component';
 import {NoteDetailsComponent} from './note-details/note-details.component';
 import {MatDialogModule} from "@angular/material/dialog";
 import {LoginComponent} from './login/login.component';
+import {DescriptionPipe} from "./pipe/description.pipe.";
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import {LoginComponent} from './login/login.component';
     NoteSummaryComponent,
     NoteDetailsComponent,
     LoginComponent,
+    DescriptionPipe,
   ],
   imports: [
     BrowserModule,

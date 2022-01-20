@@ -23,9 +23,12 @@
       <button mat-icon-button [routerLink]="['/note-editor', note.id]">
         <mat-icon >edit</mat-icon>
       </button>
-      <button mat-icon-button [routerLink]="['/note', note.id]">
-        <mat-icon>details</mat-icon>
-      </button>
+      <ng-container *ngIf="note.description.length > 50">
+        <button mat-icon-button [routerLink]="['/note', note.id]">
+          <mat-icon>details</mat-icon>
+        </button>
+      </ng-container>
+
     </mat-card-actions>
   </mat-card>
 </ng-container>
