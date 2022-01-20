@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {Note} from "../core/note";
 import {NotesService} from "../service/notes.service";
 import {ActivatedRoute} from "@angular/router";
+import {TooltipPosition} from "@angular/material/tooltip";
+import {FormControl} from "@angular/forms";
 
 @Component({
   selector: 'app-note-details',
@@ -11,6 +13,7 @@ import {ActivatedRoute} from "@angular/router";
 export class NoteDetailsComponent implements OnInit {
 
   note?: Note;
+  position = new FormControl('below');
 
   constructor(private service: NotesService,
               private route: ActivatedRoute,

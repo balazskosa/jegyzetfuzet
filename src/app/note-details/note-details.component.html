@@ -7,9 +7,13 @@
       Description: {{ note.description }}
     </mat-card-content>
     <mat-card-actions>
-      <button mat-icon-button routerLink="/notes">
+      <button mat-icon-button routerLink="/notes" #tooltip="matTooltip"
+              matTooltip="Go back"
+              [matTooltipPosition]="position.value"
+              matTooltipHideDelay="50">
         <mat-icon>arrow_back_ios</mat-icon>
       </button>
+
     </mat-card-actions>
   </mat-card>
   </ng-container>

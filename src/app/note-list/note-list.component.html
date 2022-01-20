@@ -17,14 +17,23 @@
       </p>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-button (click)="onDelete(note)" >
-        <mat-icon >clear</mat-icon>
+      <button mat-button (click)="onDelete(note)" #tooltip="matTooltip"
+              matTooltip="Deleting the note"
+              [matTooltipPosition]="position.value"
+              matTooltipHideDelay="50">
+        <mat-icon>clear</mat-icon>
       </button>
-      <button mat-icon-button [routerLink]="['/note-editor', note.id]">
-        <mat-icon >edit</mat-icon>
+      <button mat-icon-button [routerLink]="['/note-editor', note.id]" #tooltip="matTooltip"
+              matTooltip="Editing the note"
+              [matTooltipPosition]="position.value"
+              matTooltipHideDelay="50">
+        <mat-icon>edit</mat-icon>
       </button>
       <ng-container *ngIf="note.description.length > 50">
-        <button mat-icon-button [routerLink]="['/note', note.id]">
+        <button mat-icon-button [routerLink]="['/note', note.id]" #tooltip="matTooltip"
+                matTooltip="Details of the note"
+                [matTooltipPosition]="position.value"
+                matTooltipHideDelay="50">
           <mat-icon>details</mat-icon>
         </button>
       </ng-container>

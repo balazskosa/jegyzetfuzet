@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {NotesService} from "../service/notes.service";
 import {Note} from "../core/note";
+import {FormControl} from "@angular/forms";
+import {TooltipPosition} from "@angular/material/tooltip";
 
 @Component({
   selector: 'app-note-list',
@@ -8,6 +10,9 @@ import {Note} from "../core/note";
   styleUrls: ['./note-list.component.css']
 })
 export class NoteListComponent implements OnInit {
+
+  positionOptions: TooltipPosition[] = ['below', 'above', 'left', 'right'];
+  position = new FormControl(this.positionOptions[0]);
 
   notes: Note[] = [];
   constructor(private service: NotesService) {

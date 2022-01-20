@@ -24,6 +24,7 @@ import {LoginComponent} from './login/login.component';
 import {DescriptionPipe} from "./pipe/description.pipe";
 import {MatButtonToggleModule} from "@angular/material/button-toggle";
 import {MatRadioModule} from "@angular/material/radio";
+import {MatTooltipModule} from "@angular/material/tooltip";
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import {MatRadioModule} from "@angular/material/radio";
         MatDialogModule,
         MatButtonToggleModule,
         MatRadioModule,
+        MatTooltipModule,
     ],
   providers: [
     NotesService,
