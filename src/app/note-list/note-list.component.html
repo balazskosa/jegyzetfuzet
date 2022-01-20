@@ -17,7 +17,7 @@
   <mat-card>
     <mat-card-header>
       <mat-card-title>{{ note.title }}</mat-card-title>
-      <mat-card-subtitle>{{ note.title }}</mat-card-subtitle>
+      <mat-card-subtitle>{{ note.importance | titlecase }}</mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
       <p>
@@ -50,6 +50,7 @@
 
       </ng-container>
 
+
     </mat-card-actions>
   </mat-card>
 </ng-container>
@@ -62,6 +63,3 @@
       </mat-card-content>
     </mat-card>
 </ng-container>
-
-
-
