@@ -29,3 +29,12 @@ div {
 textarea {
   height: 150px;
 }
+
+.selection {
+  width: 100px;
+}
+
+.mat-radio-button {
+  margin: 0 8px;
+}
+

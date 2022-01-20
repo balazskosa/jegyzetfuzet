@@ -5,6 +5,14 @@ export interface Note {
   id?: number;
   title: string;
   description: string;
-  label?: Label;
+  importance: Importance;
+  labels?: Label[];
   user?: User;
+}
+
+export enum Importance {
+  None = "NONE",
+  Low = 'LOW',
+  Medium = 'MEDIUM',
+  High = 'HIGH'
 }

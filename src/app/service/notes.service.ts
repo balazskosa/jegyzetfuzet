@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import {Note} from "../core/note";
+import {Injectable} from '@angular/core';
+import {Importance, Note} from "../core/note";
 
 @Injectable()
 export class NotesService {
@@ -16,12 +16,14 @@ export class NotesService {
         " sit amet maximus. Nam rutrum ultricies mi in sollicitudin. Curabitur id vulputate orci. Sed eu lacus" +
         " sit amet magna ornare mollis. Pellentesque dapibus mattis" +
         " ipsum, sit amet tincidunt risus lobortis ornare. Quisque laoreet tellus eu imperdiet feugiat.",
+      importance: Importance.Low,
 
     },
     {
       id: 2,
       title: "note2",
       description: "Description2",
+      importance: Importance.None,
     },
     {
       id: 3,
@@ -31,31 +33,37 @@ export class NotesService {
         " sem placerat consectetur. Etiam mattis nunc vitae est luctus pulvinar. Pellentesque tincidunt nec dolor " +
         "eget molestie. Nulla elementum ante porta orci porta, nec feugiat augue hendrerit. Sed dignissim" +
         " turpis eu augue vestibulum, vitae pretium massa varius. Maecenas et dui at magna rhoncus pharetra.",
+      importance: Importance.Medium,
     },
     {
       id: 4,
       title: "note4",
       description: "Description3",
+      importance: Importance.None,
     },
     {
       id: 5,
       title: "note5",
       description: "Description5",
+      importance: Importance.None,
     },
     {
       id: 6,
       title: "note6",
       description: "Description6",
+      importance: Importance.None,
     },
     {
       id: 7,
       title: "note7",
       description: "Description7",
+      importance: Importance.None,
     },
     {
       id: 8,
       title: "note8",
       description: "Description8",
+      importance: Importance.None,
     },
   ]
 

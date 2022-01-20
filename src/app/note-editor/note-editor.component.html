@@ -10,22 +10,35 @@
     />
     <mat-error *ngIf="title.invalid">
       <span *ngIf="title.hasError('required')"></span>
-        This field is required
+      This field is required
     </mat-error>
   </mat-form-field>
 
   <mat-form-field appearance="outline">
     <mat-label>Description</mat-label>
     <textarea matInput placeholder="write something... "
-              formControlName ="description"
+              formControlName="description"
               name="description"
-              required
     ></textarea>
     <mat-error *ngIf="description.invalid">
       <span *ngIf="description.hasError('required')"></span>
       This field is required
     </mat-error>
+
+
   </mat-form-field>
+  <div>
+    <mat-radio-group
+      aria-labelledby="example-radio-group-label"
+      class="example-radio-group"
+      formControlName="importance"
+      name="importance">
+      <mat-radio-button class="example-radio-button" *ngFor="let howImportant of importanceDegree"
+                        [value]="howImportant">
+        {{ howImportant | titlecase }}
+      </mat-radio-button>
+    </mat-radio-group>
+  </div>
   <div class="button-container">
     <button mat-raised-button color="primary" type="submit"> Save</button>
     <button mat-raised-button color="primary" type="button" routerLink="/note-list">Cancel</button>

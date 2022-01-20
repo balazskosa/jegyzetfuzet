@@ -21,7 +21,9 @@ import {NoteSummaryComponent} from './note-summary/note-summary.component';
 import {NoteDetailsComponent} from './note-details/note-details.component';
 import {MatDialogModule} from "@angular/material/dialog";
 import {LoginComponent} from './login/login.component';
-import {DescriptionPipe} from "./pipe/description.pipe.";
+import {DescriptionPipe} from "./pipe/description.pipe";
+import {MatButtonToggleModule} from "@angular/material/button-toggle";
+import {MatRadioModule} from "@angular/material/radio";
 
 @NgModule({
   declarations: [
@@ -33,23 +35,25 @@ import {DescriptionPipe} from "./pipe/description.pipe.";
     LoginComponent,
     DescriptionPipe,
   ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    MatToolbarModule,
-    MatIconModule,
-    MatButtonModule,
-    MatSidenavModule,
-    MatExpansionModule,
-    MatListModule,
-    MatFormFieldModule,
-    MatInputModule,
-    AppRoutingModule,
-    FormsModule,
-    MatCardModule,
-    ReactiveFormsModule,
-    MatDialogModule,
-  ],
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        MatToolbarModule,
+        MatIconModule,
+        MatButtonModule,
+        MatSidenavModule,
+        MatExpansionModule,
+        MatListModule,
+        MatFormFieldModule,
+        MatInputModule,
+        AppRoutingModule,
+        FormsModule,
+        MatCardModule,
+        ReactiveFormsModule,
+        MatDialogModule,
+        MatButtonToggleModule,
+        MatRadioModule,
+    ],
   providers: [
     NotesService,
   ],

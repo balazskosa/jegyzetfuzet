@@ -11,15 +11,10 @@ export class NoteListComponent implements OnInit {
 
   notes: Note[] = [];
   constructor(private service: NotesService) {
-
   }
 
   async ngOnInit(): Promise<void> {
     this.notes = await this.service.getNotes();
-  }
-
-  log() {
-    console.log("clicked");
   }
 
   async onDelete(note: Note) {
