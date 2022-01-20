@@ -1,6 +1,6 @@
 .mat-card {
   max-width: 600px;
-  margin: 20% auto;
+  margin: 20px auto;
   border-radius: 30px;
   background: linear-gradient(to left, darkorange, darkslategray);
 }

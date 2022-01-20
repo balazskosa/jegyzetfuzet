@@ -23,13 +23,14 @@ export class NoteListComponent implements OnInit {
   }
 
   async ngOnInit(): Promise<void> {
+
     const howImportant = this.currentRoute.snapshot.paramMap.get('howImportant');
-    console.log(howImportant);
     if (howImportant) {
       this.notes = await this.service.getNotesByImportance(howImportant.toUpperCase());
       this.visibility = false;
       return;
     }
+
     this.notes = await this.service.getNotes();
   }
 

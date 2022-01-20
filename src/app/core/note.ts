@@ -6,6 +6,7 @@ export interface Note {
   title: string;
   description: string;
   importance: Importance;
+  date: Date;
   labels?: Label[];
   user?: User;
 }
@@ -15,4 +16,13 @@ export enum Importance {
   Low = 'LOW',
   Medium = 'MEDIUM',
   High = 'HIGH'
+}
+
+export enum Date {
+  None = "NONE",
+  Today = "TODAY",
+  NextWeek = "NEXTWEEK",
+  NextMonth = "NEXTMONTH",
+  Someday = "SOMEDAY",
+
 }

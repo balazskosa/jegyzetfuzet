@@ -25,8 +25,13 @@ import {DescriptionPipe} from "./pipe/description.pipe";
 import {MatButtonToggleModule} from "@angular/material/button-toggle";
 import {MatRadioModule} from "@angular/material/radio";
 import {MatTooltipModule} from "@angular/material/tooltip";
-import {LabelListComponent} from './login/label-list/label-list.component';
+import {LabelListComponent} from './label-list/label-list.component';
 import {MatTreeModule} from "@angular/material/tree";
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MatNativeDateModule} from "@angular/material/core";
+import {NextPipe} from "./pipe/next.pipe";
+import { ReminderListComponent } from './reminder-list/reminder-list.component';
+import { ReminderElementsComponent } from './reminder-list/reminder-elements/reminder-elements.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +42,10 @@ import {MatTreeModule} from "@angular/material/tree";
     NoteDetailsComponent,
     LoginComponent,
     DescriptionPipe,
+    NextPipe,
     LabelListComponent,
+    ReminderListComponent,
+    ReminderElementsComponent,
   ],
   imports: [
     BrowserModule,
@@ -59,6 +67,8 @@ import {MatTreeModule} from "@angular/material/tree";
     MatRadioModule,
     MatTooltipModule,
     MatTreeModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
   ],
   providers: [
     NotesService,

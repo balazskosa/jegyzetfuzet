@@ -25,15 +25,32 @@
       This field is required
     </mat-error>
 
-
   </mat-form-field>
+
+
   <div>
+    <i>Date</i><p></p>
+    <mat-radio-group
+      aria-labelledby="example-radio-group-label"
+      class="example-radio-group"
+      formControlName="date"
+      name="date">
+      <mat-radio-button class="example-radio-button" *ngFor="let date of dateLabel"
+                        [value]="date">
+        {{ date | next | titlecase }}
+      </mat-radio-button>
+    </mat-radio-group>
+  </div>
+
+
+  <div>
+    <i>Importance</i><p></p>
     <mat-radio-group
       aria-labelledby="example-radio-group-label"
       class="example-radio-group"
       formControlName="importance"
       name="importance">
-      <mat-radio-button class="example-radio-button" *ngFor="let howImportant of importanceDegree"
+      <mat-radio-button class="example-radio-button" *ngFor="let howImportant of importanceLabel"
                         [value]="howImportant">
         {{ howImportant | titlecase }}
       </mat-radio-button>

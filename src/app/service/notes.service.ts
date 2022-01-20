@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Importance, Note} from "../core/note";
+import {Date, Importance, Note} from "../core/note";
 
 @Injectable()
 export class NotesService {
@@ -17,6 +17,7 @@ export class NotesService {
         " sit amet magna ornare mollis. Pellentesque dapibus mattis" +
         " ipsum, sit amet tincidunt risus lobortis ornare. Quisque laoreet tellus eu imperdiet feugiat.",
       importance: Importance.Low,
+      date: Date.NextMonth,
 
     },
     {
@@ -24,6 +25,7 @@ export class NotesService {
       title: "note2",
       description: "Description2",
       importance: Importance.None,
+      date: Date.None,
     },
     {
       id: 3,
@@ -34,36 +36,42 @@ export class NotesService {
         "eget molestie. Nulla elementum ante porta orci porta, nec feugiat augue hendrerit. Sed dignissim" +
         " turpis eu augue vestibulum, vitae pretium massa varius. Maecenas et dui at magna rhoncus pharetra.",
       importance: Importance.Medium,
+      date: Date.None,
     },
     {
       id: 4,
       title: "note4",
       description: "Description3",
       importance: Importance.None,
+      date: Date.None,
     },
     {
       id: 5,
       title: "note5",
       description: "Description5",
       importance: Importance.None,
+      date: Date.None,
     },
     {
       id: 6,
       title: "note6",
       description: "Description6",
       importance: Importance.None,
+      date: Date.None,
     },
     {
       id: 7,
       title: "note7",
       description: "Description7",
       importance: Importance.None,
+      date: Date.None,
     },
     {
       id: 8,
       title: "note8",
       description: "Description8",
       importance: Importance.None,
+      date: Date.None,
     },
   ]
 
@@ -84,6 +92,10 @@ export class NotesService {
 
   async getNotesByImportance(howImportant: string): Promise<Note[]> {
     return this.notes.filter(note => note.importance == howImportant);
+  }
+
+  async getNotesByDate(date: string): Promise<Note[]> {
+    return this.notes.filter(note => note.date == date);
   }
 
   async createNote(note: Note): Promise<Note> {

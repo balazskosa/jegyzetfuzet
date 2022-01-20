@@ -1,8 +1,9 @@
 import {Component, Input, OnDestroy, OnInit} from '@angular/core';
-import {Importance, Note} from "../core/note";
+import {Date, Importance, Note} from "../core/note";
 import {FormBuilder, FormControl, FormGroup, NgForm, Validators} from "@angular/forms";
 import {NotesService} from "../service/notes.service";
 import {ActivatedRoute, Router} from "@angular/router";
+import {calcPossibleSecurityContexts} from "@angular/compiler/src/template_parser/binding_parser";
 
 @Component({
   selector: 'app-note-editor',
@@ -14,12 +15,15 @@ export class NoteEditorComponent implements OnInit {
   pageTitle: string = "Create note";
   note?: Note;
 
-  importanceDegree: string[] = [];
+  importanceLabel: string[] = [];
+  dateLabel: string[] = [];
 
+  dp3: any;
   noteForm: FormGroup = this.fb.group({
     title: ['', Validators.required],
     description: ['', Validators.required],
     importance: [Importance.None, Validators.required],
+    date: [Date.None, Validators.required],
   });
 
 
@@ -27,38 +31,35 @@ export class NoteEditorComponent implements OnInit {
     private currentRoute: ActivatedRoute,
     private route: Router,
     private service: NotesService,
-    private fb: FormBuilder)
-  {
-        this.setImportance();
+    private fb: FormBuilder) {
+    this.setLabels();
   }
 
   async ngOnInit(): Promise<void> {
 
-
     const noteId = this.currentRoute.snapshot.paramMap.get('noteId');
     if (noteId) {
       this.note = await this.service.getNote(parseInt(noteId));
-      let howImportant: string = "";
-      if (this.note?.importance) howImportant = this.note.importance;
+
       this.noteForm.setValue({
         title: this.note?.title,
         description: this.note?.description,
-        importance: howImportant
+        importance: this.note?.importance,
+        date: this.note?.date,
       });
       this.pageTitle = "Edit note";
-
-      console.log(this.note);
 
     }
 
   }
 
-  setImportance() {
-
+  setLabels() {
     for (let enumName in Importance) {
-      this.importanceDegree?.push(enumName.toUpperCase());
+      this.importanceLabel?.push(enumName.toUpperCase());
     }
-
+    for (let enumName in Date) {
+      this.dateLabel?.push(enumName.toUpperCase());
+    }
   }
 
   get title(): FormControl {
@@ -80,8 +81,6 @@ export class NoteEditorComponent implements OnInit {
     } else {
       await this.service.createNote(this.note);
     }
-
-    console.log(this.note);
 
     await this.route.navigate(["/notes"]);
   }

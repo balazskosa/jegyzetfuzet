@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Importance} from "../../core/note";
+import {Importance} from "../core/note";
 
 
 @Component({
@@ -9,8 +9,7 @@ import {Importance} from "../../core/note";
 })
 export class LabelListComponent implements OnInit {
 
-  importanceDegree: string[] = [];
-  show?: boolean = false;
+  importanceLabel: string[] = [];
   constructor() {
       this.setImportance();
   }
@@ -22,13 +21,9 @@ export class LabelListComponent implements OnInit {
   setImportance() {
 
     for (let enumName in Importance) {
-      this.importanceDegree?.push(enumName);
+      this.importanceLabel?.push(enumName);
     }
 
-  }
-
-  setShow() {
-    this.show = !this.show;
   }
 
 }
