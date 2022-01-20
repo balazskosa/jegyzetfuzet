@@ -1,0 +1,15 @@
+.mat-card {
+  max-width: 600px;
+  margin: 20% auto;
+  border-radius: 30px;
+  background: linear-gradient(to left, darkorange, darkslategray);
+}
+
+.mat-card-actions {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.mat-icon {
+  color: black;
+}

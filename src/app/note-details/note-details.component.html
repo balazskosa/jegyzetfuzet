@@ -1,16 +1,22 @@
 <ng-container *ngIf="note; else noteMissing">
-  <div>
-    <p>Id: {{ note.id }}</p>
-  </div>
-  <div>
-    <h1>Title: {{ note.title }}</h1>
-  </div>
-  <div>
-    <p>Description: {{ note.description }}</p>
-  </div>
+
+  <mat-card>
+    <mat-card-title>Title: {{ note.title }}</mat-card-title>
+    <mat-card-subtitle>Id: {{ note.id }}</mat-card-subtitle>
+    <mat-card-content>
+      Description: {{ note.description }}
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-icon-button routerLink="/notes">
+        <mat-icon>arrow_back_ios</mat-icon>
+      </button>
+    </mat-card-actions>
+  </mat-card>
 
 </ng-container>
 
 <ng-template #noteMissing>
   <h1>Note doesn't exist.</h1>
 </ng-template>
+
+
