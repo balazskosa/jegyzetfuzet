@@ -1,5 +1,5 @@
-<ng-container *ngIf="note; else noteMissing">
-
+<ng-container *ngIf="note">
+  <ng-container *ngIf="note.description.length > 50; else noteMissing">
   <mat-card>
     <mat-card-title>Title: {{ note.title }}</mat-card-title>
     <mat-card-subtitle>Id: {{ note.id }}</mat-card-subtitle>
@@ -12,11 +12,16 @@
       </button>
     </mat-card-actions>
   </mat-card>
-
+  </ng-container>
 </ng-container>
 
 <ng-template #noteMissing>
-  <h1>Note doesn't exist.</h1>
+  <mat-card>
+    <mat-card-content class="notExist">
+      <h1>The view of this note doesn't exist.</h1>
+    </mat-card-content>
+  </mat-card>
+
 </ng-template>
 
 

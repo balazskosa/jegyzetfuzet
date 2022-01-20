@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-root',
@@ -8,14 +9,12 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'Notebook';
 
-  open (even: any) {
-    console.log("opened");
+  constructor(private route:Router) {
   }
 
-  close(event: any) {
-    console.log("closed");
+  async logout() {
+    await this.route.navigate(['/login']);
   }
-
 }
 
 
