@@ -19,7 +19,7 @@ export class NoteEditorComponent implements OnInit {
   noteForm: FormGroup = this.fb.group({
     title: ['', Validators.required],
     description: ['', Validators.required],
-    importance: [''],
+    importance: [Importance.None, Validators.required],
   });
 
 
