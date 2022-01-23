@@ -7,7 +7,7 @@
   width: 625px;
   height: 50px;
   border-radius: 30px;
-  background: linear-gradient(to left, darkorange, darkslategray);
+  background: linear-gradient(to left, var(--color-one), var(--color-two));
   ;
 }
 
