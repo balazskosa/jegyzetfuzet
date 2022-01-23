@@ -11,18 +11,6 @@
   ;
 }
 
-.mat-card {
-  max-width: 600px;
-  margin: 8px auto;
-  border-radius: 30px;
-  background: linear-gradient(to right, darkorange, darkslategray);
-}
-
-.mat-card-actions {
-  display: flex;
-  flex-direction: row-reverse;
-}
-
 .mat-icon {
   color: black;
 }

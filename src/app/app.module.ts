@@ -17,7 +17,6 @@ import {AppRoutingModule} from './app-routing.module';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatCardModule} from "@angular/material/card";
 import {NotesService} from "./service/notes.service";
-import {NoteSummaryComponent} from './note-summary/note-summary.component';
 import {NoteDetailsComponent} from './note-details/note-details.component';
 import {MatDialogModule} from "@angular/material/dialog";
 import {LoginComponent} from './login/login.component';
@@ -30,15 +29,15 @@ import {MatTreeModule} from "@angular/material/tree";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
 import {NextPipe} from "./pipe/next.pipe";
-import { ReminderListComponent } from './reminder-list/reminder-list.component';
-import { ReminderElementsComponent } from './reminder-list/reminder-elements/reminder-elements.component';
+import {ReminderListComponent} from './reminder-list/reminder-list.component';
+import {ReminderElementsComponent} from './reminder-list/reminder-elements/reminder-elements.component';
+import {NoteComponent} from './note/note.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NoteListComponent,
     NoteEditorComponent,
-    NoteSummaryComponent,
     NoteDetailsComponent,
     LoginComponent,
     DescriptionPipe,
@@ -46,6 +45,7 @@ import { ReminderElementsComponent } from './reminder-list/reminder-elements/rem
     LabelListComponent,
     ReminderListComponent,
     ReminderElementsComponent,
+    NoteComponent,
   ],
   imports: [
     BrowserModule,

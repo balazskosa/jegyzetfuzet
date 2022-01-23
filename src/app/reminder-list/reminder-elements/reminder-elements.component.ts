@@ -15,7 +15,7 @@ export class ReminderElementsComponent implements OnInit {
   constructor(private service: NotesService) { }
 
   async ngOnInit(): Promise<void> {
-    this.notes = await this.service.getNotesByDate(this.date);
+    //this.notes = await this.service.getNotesByDate(this.date);
   }
 
 }

@@ -13,47 +13,9 @@
     </button>
   </div>
 </ng-template>
+
 <ng-container *ngFor="let note of notes">
-  <mat-card>
-    <mat-card-header>
-      <mat-card-title>{{ note.title }}</mat-card-title>
-      <mat-card-subtitle>{{ note.importance | titlecase }}</mat-card-subtitle>
-      <mat-card-subtitle>{{ note.date | titlecase | next }}</mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content>
-      <p>
-        <app-note-summary [note]="note">
-        </app-note-summary>
-      </p>
-    </mat-card-content>
-    <mat-card-actions>
-      <ng-container *ngIf="visibility">
-        <button mat-button (click)="onDelete(note)" #tooltip="matTooltip"
-                matTooltip="Deleting the note"
-                [matTooltipPosition]="position.value"
-                matTooltipHideDelay="50">
-          <mat-icon>clear</mat-icon>
-        </button>
-        <button mat-icon-button [routerLink]="['/note-editor', note.id]" #tooltip="matTooltip"
-                matTooltip="Editing the note"
-                [matTooltipPosition]="position.value"
-                matTooltipHideDelay="50">
-          <mat-icon>edit</mat-icon>
-        </button>
-      </ng-container>
-      <ng-container *ngIf="note.description.length > 50">
-        <button mat-icon-button [routerLink]="['/note', note.id]" #tooltip="matTooltip"
-                matTooltip="Details of the note"
-                [matTooltipPosition]="position.value"
-                matTooltipHideDelay="50">
-          <mat-icon>details</mat-icon>
-        </button>
-
-      </ng-container>
-
-
-    </mat-card-actions>
-  </mat-card>
+  <app-note [note]="note"></app-note>
 </ng-container>
 
 
