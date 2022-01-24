@@ -1,9 +1,8 @@
 <mat-card>
   <mat-card-header>
     <mat-card-title>{{ note.title }}</mat-card-title>
-<!--    <mat-card-subtitle>{{ note.importance | titlecase }}</mat-card-subtitle>-->
-<!--    <mat-card-subtitle>{{ note.date | titlecase | next }}</mat-card-subtitle>-->
-<!--    Label's fields-->
+    <mat-card-subtitle>Importance: {{ note.importance | titlecase }}</mat-card-subtitle>
+    <mat-card-subtitle>Date: {{ note.date | titlecase | next }}</mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
     {{ note.description }}

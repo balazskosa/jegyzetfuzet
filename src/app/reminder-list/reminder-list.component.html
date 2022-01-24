@@ -1,6 +1,6 @@
 <ng-container *ngFor="let date of dateLabel">
   <div class="button-container">
-    <button mat-raised-button color="primary" [routerLink]="['/notes', date]">
+    <button mat-raised-button color="primary" [routerLink]="['/notes', {reminders: date}]">
       {{ date | titlecase | next }}
     </button>
   </div>

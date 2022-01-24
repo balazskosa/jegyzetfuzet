@@ -8,14 +8,14 @@
 
 <ng-template #backToLabels>
   <div class="button-container">
-    <button mat-raised-button color="primary" routerLink="/labels">
+    <button mat-raised-button color="primary" (click)="navigate()">
       <mat-icon>arrow_back_ios</mat-icon>
     </button>
   </div>
 </ng-template>
 
 <ng-container *ngFor="let note of notes">
-  <app-note [note]="note"></app-note>
+  <app-note [note]="note" [visibility]="visibility"></app-note>
 </ng-container>
 
 

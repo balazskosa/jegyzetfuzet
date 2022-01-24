@@ -23,10 +23,24 @@ export class NoteListComponent implements OnInit {
   }
 
   async ngOnInit(): Promise<void> {
+    this.route.routeReuseStrategy.shouldReuseRoute = () => {
+      return false;
+    };
 
-    const howImportant = this.currentRoute.snapshot.paramMap.get('howImportant');
+    console.log(this.currentRoute.snapshot.paramMap.keys);
+
+
+    const howImportant = this.currentRoute.snapshot.paramMap.get('labels');
+    const dateLabel = this.currentRoute.snapshot.paramMap.get('reminders');
+
     if (howImportant) {
       this.notes = await this.service.getNotesByImportance(howImportant.toUpperCase());
+      this.visibility = false;
+      return;
+    }
+
+    if (dateLabel) {
+      this.notes = await this.service.getNotesByDate(dateLabel.toUpperCase());
       this.visibility = false;
       return;
     }
@@ -37,6 +51,10 @@ export class NoteListComponent implements OnInit {
   async onDelete(note: Note) {
     await this.service.deleteNote(note);
     await this.route.navigate(['/notes']);
+  }
+
+  async navigate() {
+    await this.route.navigate(['/', this.currentRoute.snapshot.paramMap.keys[0]]);
   }
 
 }

@@ -9,8 +9,6 @@ import {ReminderListComponent} from "./reminder-list/reminder-list.component";
 
 const routes: Routes = [
   {path: 'notes', component: NoteListComponent},
-  {path: 'notes/:howImportant', component: NoteListComponent},
-  {path: 'notes/:dateLabel', component: NoteListComponent},
   {path: 'labels', component: LabelListComponent},
   {path: 'reminders', component: ReminderListComponent},
   {path: 'note/:noteId', component: NoteDetailsComponent},

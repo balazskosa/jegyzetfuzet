@@ -15,3 +15,9 @@
   color: black;
 }
 
+.mat-card {
+  max-width: 600px;
+  margin: 8px auto;
+  border-radius: 30px;
+  background: linear-gradient(to right, var(--color-one), var(--color-two));
+}

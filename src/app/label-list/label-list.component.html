@@ -1,6 +1,6 @@
 <ng-container *ngFor="let howImportant of importanceLabel">
   <div class="button-container">
-    <button mat-raised-button color="primary" [routerLink]="['/notes', howImportant]">
+    <button mat-raised-button color="primary"[routerLink]="['/notes',{ labels: howImportant}]">
       {{ howImportant }}
     </button>
   </div>

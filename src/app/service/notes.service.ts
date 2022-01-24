@@ -57,21 +57,21 @@ export class NotesService {
       title: "note6",
       description: "Description6",
       importance: Importance.None,
-      date: Date.None,
+      date: Date.NextMonth,
     },
     {
       id: 7,
       title: "note7",
       description: "Description7",
       importance: Importance.None,
-      date: Date.None,
+      date: Date.Today,
     },
     {
       id: 8,
       title: "note8",
       description: "Description8",
       importance: Importance.None,
-      date: Date.None,
+      date: Date.Today,
     },
   ]
 
