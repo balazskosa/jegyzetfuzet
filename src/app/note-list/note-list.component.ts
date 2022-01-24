@@ -50,7 +50,6 @@ export class NoteListComponent implements OnInit {
 
   async onDelete(note: Note) {
     await this.service.deleteNote(note);
-    await this.route.navigate(['/notes']);
   }
 
   async navigate() {

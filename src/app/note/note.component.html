@@ -5,16 +5,16 @@
     <mat-card-subtitle>Date: {{ note.date | titlecase | next }}</mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
-    {{ note.description }}
+    {{ note.description | description }}
   </mat-card-content>
   <mat-card-actions>
     <ng-container *ngIf="visibility">
-<!--      <button mat-button (click)="onDelete(note)" #tooltip="matTooltip"-->
-<!--              matTooltip="Deleting the note"-->
-<!--              [matTooltipPosition]="position.value"-->
-<!--              matTooltipHideDelay="50">-->
-<!--        <mat-icon>clear</mat-icon>-->
-<!--      </button>-->
+      <button mat-button (click)="onClick()" #tooltip="matTooltip"
+              matTooltip="Deleting the note"
+              [matTooltipPosition]="position.value"
+              matTooltipHideDelay="50">
+        <mat-icon>clear</mat-icon>
+      </button>
       <button mat-icon-button [routerLink]="['/note-editor', note.id]" #tooltip="matTooltip"
               matTooltip="Editing the note"
               [matTooltipPosition]="position.value"

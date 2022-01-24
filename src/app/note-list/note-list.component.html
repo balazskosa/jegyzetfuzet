@@ -15,7 +15,7 @@
 </ng-template>
 
 <ng-container *ngFor="let note of notes">
-  <app-note [note]="note" [visibility]="visibility"></app-note>
+  <app-note [note]="note" [visibility]="visibility" (change)="onDelete($event)"></app-note>
 </ng-container>
 
 
