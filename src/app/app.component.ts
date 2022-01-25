@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import {Router} from "@angular/router";
+import {Component, OnInit} from '@angular/core';
+import {AuthService} from "./service/auth.service";
+
 
 @Component({
   selector: 'app-root',
@@ -8,13 +9,19 @@ import {Router} from "@angular/router";
 })
 export class AppComponent {
   title = 'Notebook';
+  userName?: string;
 
-  constructor(private route:Router) {
+  constructor(private auth: AuthService) {
   }
 
   async logout() {
-    await this.route.navigate(['/login']);
+    await this.auth.logout();
   }
+
+  getUserName(): string | null | undefined{
+    return this.auth.getUserName();
+  }
+
 }
 
 

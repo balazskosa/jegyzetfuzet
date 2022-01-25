@@ -27,9 +27,6 @@ export class NoteListComponent implements OnInit {
       return false;
     };
 
-    console.log(this.currentRoute.snapshot.paramMap.keys);
-
-
     const howImportant = this.currentRoute.snapshot.paramMap.get('labels');
     const dateLabel = this.currentRoute.snapshot.paramMap.get('reminders');
 

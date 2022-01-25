@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
+import {AuthService} from "../service/auth.service";
 
 @Component({
   selector: 'app-login',
@@ -9,16 +10,16 @@ import {Router} from "@angular/router";
 export class LoginComponent implements OnInit {
 
 
-  constructor(private route: Router) {
+  constructor(private auth: AuthService) {
 
   }
 
   ngOnInit(): void {
-
   }
 
   async login() {
-    await this.route.navigate(["/notes"]);
+    await this.auth.login();
+
   }
 
 }
