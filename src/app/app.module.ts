@@ -32,6 +32,7 @@ import {NextPipe} from "./pipe/next.pipe";
 import {ReminderListComponent} from './reminder-list/reminder-list.component';
 import {ReminderElementsComponent} from './reminder-list/reminder-elements/reminder-elements.component';
 import {NoteComponent} from './note/note.component';
+import { DeleteNoteListComponent } from './delete-note-list/delete-note-list.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import {NoteComponent} from './note/note.component';
     ReminderListComponent,
     ReminderElementsComponent,
     NoteComponent,
+    DeleteNoteListComponent,
 
   ],
   imports: [
