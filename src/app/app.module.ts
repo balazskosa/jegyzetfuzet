@@ -70,7 +70,6 @@ import {NoteComponent} from './note/note.component';
     MatTreeModule,
     MatDatepickerModule,
     MatNativeDateModule,
-
   ],
   providers: [
     NotesService,

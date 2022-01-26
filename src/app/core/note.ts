@@ -24,5 +24,4 @@ export enum Date {
   NextWeek = "NEXTWEEK",
   NextMonth = "NEXTMONTH",
   Someday = "SOMEDAY",
-
 }
