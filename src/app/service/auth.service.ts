@@ -24,7 +24,10 @@ export class AuthService {
   }
 
   getUserName(): string | null | undefined{
-
     return getAuth().currentUser?.displayName;
   }
-}
+
+  hasUser(): boolean {
+    return !!(getAuth().currentUser);
+  }
+ }

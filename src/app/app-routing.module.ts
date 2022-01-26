@@ -6,16 +6,21 @@ import {NoteDetailsComponent} from "./note-details/note-details.component";
 import {LoginComponent} from "./login/login.component";
 import {LabelListComponent} from "./label-list/label-list.component";
 import {ReminderListComponent} from "./reminder-list/reminder-list.component";
+import {AuthGuard} from "./service/auth-guard.service";
 
 const routes: Routes = [
-  {path: 'notes', component: NoteListComponent},
-  {path: 'labels', component: LabelListComponent},
-  {path: 'reminders', component: ReminderListComponent},
-  {path: 'note/:noteId', component: NoteDetailsComponent},
-  {path: 'note-editor/:noteId', component: NoteEditorComponent},
-  {path: 'note-editor', component: NoteEditorComponent},
   {path: 'login', component: LoginComponent},
-  {path: '**', redirectTo: "login"}
+
+
+  {path: 'notes', component: NoteListComponent},
+  {path: 'labels', component: LabelListComponent, canActivate: [AuthGuard]},
+  {path: 'reminders', component: ReminderListComponent, canActivate: [AuthGuard]},
+  {path: 'note/:noteId', component: NoteDetailsComponent, canActivate: [AuthGuard]},
+  {path: 'note-editor/:noteId', component: NoteEditorComponent, canActivate: [AuthGuard]},
+  {path: 'note-editor', component: NoteEditorComponent, canActivate: [AuthGuard]},
+
+  {path: '**', redirectTo: "login"},
+
 ];
 
 @NgModule({
