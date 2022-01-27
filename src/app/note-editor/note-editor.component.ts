@@ -85,6 +85,8 @@ export class NoteEditorComponent implements OnInit {
       await this.service.createNote(this.note);
     }
 
+    console.log(this.note);
+
     await this.route.navigate(["/notes"]);
   }
 

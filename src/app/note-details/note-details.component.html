@@ -1,10 +1,10 @@
 <ng-container *ngIf="note; else noteMissing">
   <mat-card>
     <mat-card-title>Title: {{ note.title }}</mat-card-title>
-    <mat-card-subtitle>
-      {{ note.importance | titlecase }}
-      <p>Id: {{ note.id }}</p>
-    </mat-card-subtitle>
+    <mat-card-subtitle>Importance: {{ note.importance | titlecase }}</mat-card-subtitle>
+    <mat-card-subtitle>Date: {{ note.date | titlecase | next }}</mat-card-subtitle>
+    <mat-card-subtitle>Id: {{ note.id }} </mat-card-subtitle>
+
     <mat-card-content>
       Description: {{ note.description }}
     </mat-card-content>

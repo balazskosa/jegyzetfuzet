@@ -40,11 +40,13 @@ export class NoteFirebaseService implements OnInit {
     let userId = await this.auth.getUserId();
     let dbRef = ref(this.db);
 
-    await get(child(dbRef, 'notes/' + userId + "/" + id)).then(
+    let note: Note;
+    await get(child(dbRef, 'notes/' + userId + "/" + id + "/note")).then(
       (snapshot) => {
         const data = snapshot.val();
+        note = <Note> {...snapshot.val()};
       });
-
+    //return note;
   }
 
   getNotesByImportance() {

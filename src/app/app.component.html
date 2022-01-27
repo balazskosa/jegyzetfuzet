@@ -22,8 +22,10 @@
         <a mat-list-item routerLink="/login" routerLinkActive="active">Login</a>
       </ng-template>
       <a mat-list-item routerLink="/notes" routerLinkActive="active">Notes</a>
-      <a mat-list-item routerLink="/labels" routerLinkActive="active">Labels</a>
-      <a mat-list-item routerLink="/reminders" routerLinkActive="active">Reminders</a>
+      <ng-container *ngIf="getUserName()">
+        <a mat-list-item routerLink="/labels" routerLinkActive="active">Labels</a>
+        <a mat-list-item routerLink="/reminders" routerLinkActive="active">Reminders</a>
+      </ng-container>
       <ng-container *ngIf="getUserName();">
         <a mat-list-item routerLink="/delete-notes" routerLinkActive="active">Deleted notes</a>
       </ng-container>
