@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
 import {NoteListComponent} from "./note-list/note-list.component";
 import {NoteEditorComponent} from "./note-editor/note-editor.component";
 import {NoteDetailsComponent} from "./note-details/note-details.component";
@@ -31,4 +31,5 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}

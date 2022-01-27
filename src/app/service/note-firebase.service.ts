@@ -46,6 +46,7 @@ export class NoteFirebaseService implements OnInit {
         const data = snapshot.val();
         note = <Note> {...snapshot.val()};
       });
+
     return note;
   }
 
