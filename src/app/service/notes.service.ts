@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Date, Importance, Note} from "../core/note";
+import {NoteFirebaseService} from "./note-firebase.service";
 
 @Injectable()
 export class NotesService {
@@ -78,7 +79,7 @@ export class NotesService {
   private _currentId: number = 100;
 
 
-  constructor() { }
+  constructor(private noteFirebaseService: NoteFirebaseService) { }
 
   async getNotes(): Promise<Note[]> {
     return this.notes;
@@ -102,6 +103,8 @@ export class NotesService {
     note.id = this._currentId;
     this._currentId ++;
     this.notes.splice(0, 0, note);
+
+    await this.noteFirebaseService.createNote(note);
     return note;
   }
 
@@ -113,11 +116,16 @@ export class NotesService {
       ...note,
     };
     this.notes.splice(noteIndex, 1, modifiedNote);
+
+    await this.noteFirebaseService.editNote(noteId, note);
+    await this.noteFirebaseService.getNote(100);
     return modifiedNote;
   }
 
   async deleteNote(note: Note): Promise<void> {
     const noteIndex = this.notes.findIndex((n) => n.id === note.id);
     if(noteIndex != -1)  this.notes.splice(noteIndex,1);
+
+    await this.noteFirebaseService.deleteNote(note);
   }
 }

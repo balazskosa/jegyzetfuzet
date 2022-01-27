@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import {Injectable, OnInit} from '@angular/core';
 import {getAuth, GoogleAuthProvider, signInWithPopup} from "firebase/auth";
 import {Router} from "@angular/router";
 import {initializeApp} from "firebase/app";
@@ -21,14 +21,12 @@ export class AuthService {
 
   }
 
+
   async login() {
     await signInWithPopup(getAuth(), new GoogleAuthProvider());
     await this.saveUser(getAuth().currentUser);
     await this.route.navigate(['/notes']);
 
-
-
-    await console.log((await this.isAdmin()) ? "true" : "false");
   }
 
 
@@ -65,5 +63,11 @@ export class AuthService {
       });
     return data;
   }
+
+  async getUserId(): Promise<string> {
+    let id = await getAuth().currentUser?.uid;
+    return (id) ? id : "anonymous";
+  }
+
 
 }

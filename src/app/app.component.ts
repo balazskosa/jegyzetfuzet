@@ -9,7 +9,7 @@ import {AuthService} from "./service/auth.service";
 })
 export class AppComponent {
   title = 'Notebook';
-  userName?: string;
+
 
   constructor(private auth: AuthService) {
   }
@@ -21,6 +21,7 @@ export class AppComponent {
   getUserName(): string | null | undefined{
     return this.auth.getUserName();
   }
+
 
 }
 

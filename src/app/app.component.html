@@ -1,5 +1,5 @@
 <mat-toolbar>
-  <button mat-icon-button  (click)="sidenav.toggle()">
+  <button mat-icon-button (click)="sidenav.toggle()">
     <mat-icon>menu</mat-icon>
   </button>
   <span>{{ title }}</span>
@@ -24,7 +24,9 @@
       <a mat-list-item routerLink="/notes" routerLinkActive="active">Notes</a>
       <a mat-list-item routerLink="/labels" routerLinkActive="active">Labels</a>
       <a mat-list-item routerLink="/reminders" routerLinkActive="active">Reminders</a>
-      <a mat-list-item routerLink="/delete-notes" routerLinkActive="active">Deleted notes</a>
+      <ng-container *ngIf="getUserName();">
+        <a mat-list-item routerLink="/delete-notes" routerLinkActive="active">Deleted notes</a>
+      </ng-container>
     </mat-nav-list>
     <!-- /side navigation -->
   </mat-sidenav>
