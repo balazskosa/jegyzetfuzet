@@ -156,6 +156,8 @@ export class NotesService {
 
 
     await this.noteFirebaseService.createNote(note);
+    `let firebaseNote = await this.noteFirebaseService.getNote(101);
+    console.log(firebaseNote);`
     return note;
   }
 
