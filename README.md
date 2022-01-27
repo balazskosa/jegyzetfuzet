@@ -124,12 +124,12 @@ POST /users/login (User) : User
 
 Entitás kapcsolatok
 User - Note: 1 - N
-Note - Importance 1 - 1
-Note - Date 1 - 1
-Note - Label N - N
+User - Label: N - N 
+Note - Label: N - N
 ```
 ![screenshot 478](https://user-images.githubusercontent.com/71549252/151361922-cbfe7d1c-33d9-4b4a-ac78-18e862a9d40d.jpg)
 
+![screenshot 479](https://user-images.githubusercontent.com/71549252/151375816-e873bf07-a65f-429c-8f65-74f7e6b020ba.jpg)
 
 
 # Notebook
