@@ -1,5 +1,4 @@
 import {Label} from "./label";
-import {User} from "./user";
 
 export interface Note {
   id?: number;
@@ -8,7 +7,7 @@ export interface Note {
   importance: Importance;
   date: Date;
   labels?: Label[];
-  user?: User;
+  userid: string | undefined;
 }
 
 export enum Importance {

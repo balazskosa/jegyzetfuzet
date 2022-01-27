@@ -4,6 +4,7 @@ import {FormBuilder, FormControl, FormGroup, NgForm, Validators} from "@angular/
 import {NotesService} from "../service/notes.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {calcPossibleSecurityContexts} from "@angular/compiler/src/template_parser/binding_parser";
+import {AuthService} from "../service/auth.service";
 
 @Component({
   selector: 'app-note-editor',
@@ -31,7 +32,8 @@ export class NoteEditorComponent implements OnInit {
     private currentRoute: ActivatedRoute,
     private route: Router,
     private service: NotesService,
-    private fb: FormBuilder) {
+    private fb: FormBuilder,
+    private auth: AuthService){
     this.setLabels();
   }
 
@@ -75,6 +77,7 @@ export class NoteEditorComponent implements OnInit {
       return;
     }
     this.note = <Note>{...this.note, ...this.noteForm.value};
+    this.note.userid = await this.auth.getUserId();
 
     if (this.note.id) {
       await this.service.editNote(this.note.id as number, this.note);

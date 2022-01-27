@@ -1,8 +1,7 @@
 import {Injectable, OnInit} from '@angular/core';
-import {getDatabase, ref, update, set, remove, get, child} from "firebase/database";
-import {Note} from "../core/note";
+import {child, get, getDatabase, onValue, push, ref, remove, set, update} from "firebase/database";
+import {Date, Importance, Note} from "../core/note";
 import {AuthService} from "./auth.service";
-
 
 
 @Injectable({
@@ -23,19 +22,29 @@ export class NoteFirebaseService implements OnInit {
 
   }
 
-  getNotes() {
-
+  async getNotes() {
+    let userId = await this.auth.getUserId();
+    let dbRef = ref(this.db, '/notes/' + userId);
+    onValue(dbRef, (snapshot) => {
+      snapshot.forEach((childSnapshot) => {
+        const childKey = childSnapshot.key;
+        const childData = childSnapshot.val();
+        // ...
+      });
+    }, {
+      onlyOnce: true
+    });
   }
 
-  async getNote(id: number): Promise<Note | undefined> {
+  async getNote(id: number) {
     let userId = await this.auth.getUserId();
-    let note;
     let dbRef = ref(this.db);
-    await get(child(dbRef, 'notes/' + userId + "/" + id + "/note")).then(
+
+    await get(child(dbRef, 'notes/' + userId + "/" + id)).then(
       (snapshot) => {
-        note = snapshot.val();
+        const data = snapshot.val();
       });
-    return note;
+
   }
 
   getNotesByImportance() {
@@ -47,11 +56,19 @@ export class NoteFirebaseService implements OnInit {
   }
 
   async createNote(note: Note) {
+   ` let userId = await this.auth.getUserId();
+    let dbRef = ref(this.db, 'notes/' + userId);
+    let newPostRef = push(dbRef);
+    await set(newPostRef, {
+       note: note,
+    });`
+
     let userId = await this.auth.getUserId();
     let dbRef = ref(this.db, 'notes/' + userId + '/' + note.id);
     await set(dbRef, {
       note: note,
     });
+
 
   }
 
@@ -68,6 +85,5 @@ export class NoteFirebaseService implements OnInit {
     let dbRef = ref(this.db, 'notes/' + userId + '/' + note.id);
     await remove(dbRef);
   }
-
 
 }

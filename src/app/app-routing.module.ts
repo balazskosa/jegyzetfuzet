@@ -13,12 +13,13 @@ import {DeleteNoteListComponent} from "./delete-note-list/delete-note-list.compo
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'notes', component: NoteListComponent},
+  {path: 'note-editor', component: NoteEditorComponent},
 
   {path: 'labels', component: LabelListComponent, canActivate: [AuthGuard]},
   {path: 'reminders', component: ReminderListComponent, canActivate: [AuthGuard]},
   {path: 'note/:noteId', component: NoteDetailsComponent, canActivate: [AuthGuard]},
   {path: 'note-editor/:noteId', component: NoteEditorComponent, canActivate: [AuthGuard]},
-  {path: 'note-editor', component: NoteEditorComponent},
+
 
   {path: 'delete-notes', component: DeleteNoteListComponent, canActivate: [AuthGuard, AdminAuthGuard]},
 

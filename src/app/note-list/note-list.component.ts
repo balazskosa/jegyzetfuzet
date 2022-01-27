@@ -3,6 +3,8 @@ import {NotesService} from "../service/notes.service";
 import {Note} from "../core/note";
 import {FormControl} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
+import {AuthService} from "../service/auth.service";
+import {getAuth} from "firebase/auth";
 
 @Component({
   selector: 'app-note-list',
@@ -46,6 +48,9 @@ export class NoteListComponent implements OnInit {
   }
 
   async onDelete(note: Note) {
+    const noteIndex = this.notes.findIndex((n) => n.id === note.id);
+    if (noteIndex != -1) this.notes.splice(noteIndex, 1);
+
     await this.service.deleteNote(note);
   }
 

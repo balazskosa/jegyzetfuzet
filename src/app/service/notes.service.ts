@@ -1,6 +1,8 @@
-import {Injectable} from '@angular/core';
+import {Injectable, OnInit} from '@angular/core';
 import {Date, Importance, Note} from "../core/note";
 import {NoteFirebaseService} from "./note-firebase.service";
+import {AuthService} from "./auth.service";
+import {Router} from "@angular/router";
 
 @Injectable()
 export class NotesService {
@@ -19,6 +21,7 @@ export class NotesService {
         " ipsum, sit amet tincidunt risus lobortis ornare. Quisque laoreet tellus eu imperdiet feugiat.",
       importance: Importance.Low,
       date: Date.NextMonth,
+      userid: "MkmVCdiX4JhkqncXgYpnktzxpUs2",
 
     },
     {
@@ -27,6 +30,7 @@ export class NotesService {
       description: "Description2",
       importance: Importance.None,
       date: Date.None,
+      userid: "MkmVCdiX4JhkqncXgYpnktzxpUs2",
     },
     {
       id: 3,
@@ -38,6 +42,7 @@ export class NotesService {
         " turpis eu augue vestibulum, vitae pretium massa varius. Maecenas et dui at magna rhoncus pharetra.",
       importance: Importance.Medium,
       date: Date.None,
+      userid: "MkmVCdiX4JhkqncXgYpnktzxpUs2",
     },
     {
       id: 4,
@@ -45,6 +50,7 @@ export class NotesService {
       description: "Description3",
       importance: Importance.None,
       date: Date.None,
+      userid: "MkmVCdiX4JhkqncXgYpnktzxpUs2",
     },
     {
       id: 5,
@@ -52,6 +58,7 @@ export class NotesService {
       description: "Description5",
       importance: Importance.None,
       date: Date.None,
+      userid: "MkmVCdiX4JhkqncXgYpnktzxpUs2",
     },
     {
       id: 6,
@@ -59,6 +66,7 @@ export class NotesService {
       description: "Description6",
       importance: Importance.None,
       date: Date.NextMonth,
+      userid: "MkmVCdiX4JhkqncXgYpnktzxpUs2",
     },
     {
       id: 7,
@@ -66,23 +74,63 @@ export class NotesService {
       description: "Description7",
       importance: Importance.None,
       date: Date.Today,
+      userid: "MkmVCdiX4JhkqncXgYpnktzxpUs2",
     },
+
     {
       id: 8,
       title: "note8",
       description: "Description8",
       importance: Importance.None,
       date: Date.Today,
+      userid: "MkmVCdiX4JhkqncXgYpnktzxpUs2",
+    },
+    {
+      id: 9,
+      title: "note9",
+      description: "Description9",
+      importance: Importance.None,
+      date: Date.Today,
+      userid: "dwMaZNCJddPHlXNSX0czB0QxBgp1",
+    },
+
+    {
+      id: 10,
+      title: "note10",
+      description: "Description10",
+      importance: Importance.None,
+      date: Date.Today,
+      userid: "dwMaZNCJddPHlXNSX0czB0QxBgp1",
+    },
+    {
+      id: 999,
+      title: "Test",
+      description: "Test this page before login",
+      importance: Importance.High,
+      date: Date.Today,
+      userid: "anonymous",
+    },
+    {
+      id: 998,
+      title: "Test",
+      description: "Test this page before login",
+      importance: Importance.High,
+      date: Date.Today,
+      userid: undefined,
     },
   ]
 
   private _currentId: number = 100;
 
 
-  constructor(private noteFirebaseService: NoteFirebaseService) { }
+  constructor(private noteFirebaseService: NoteFirebaseService,
+              private auth: AuthService) {
+  }
+
 
   async getNotes(): Promise<Note[]> {
-    return this.notes;
+    let userId = await this.auth.getUserId();
+    return this.notes.filter(note => note.userid == userId);
   }
 
   async getNote(id: number): Promise<Note | undefined> {
@@ -92,17 +140,20 @@ export class NotesService {
   }
 
   async getNotesByImportance(howImportant: string): Promise<Note[]> {
-    return this.notes.filter(note => note.importance == howImportant);
+    let userId = await this.auth.getUserId();
+    return this.notes.filter(note => note.importance == howImportant && note.userid == userId);
   }
 
   async getNotesByDate(date: string): Promise<Note[]> {
-    return this.notes.filter(note => note.date == date);
+    let userId = await this.auth.getUserId();
+    return this.notes.filter(note => note.date == date && note.userid == userId);
   }
 
   async createNote(note: Note): Promise<Note> {
     note.id = this._currentId;
-    this._currentId ++;
+    this._currentId++;
     this.notes.splice(0, 0, note);
+
 
     await this.noteFirebaseService.createNote(note);
     return note;
@@ -118,14 +169,15 @@ export class NotesService {
     this.notes.splice(noteIndex, 1, modifiedNote);
 
     await this.noteFirebaseService.editNote(noteId, note);
-    await this.noteFirebaseService.getNote(100);
     return modifiedNote;
   }
 
   async deleteNote(note: Note): Promise<void> {
     const noteIndex = this.notes.findIndex((n) => n.id === note.id);
-    if(noteIndex != -1)  this.notes.splice(noteIndex,1);
+    if (noteIndex != -1) this.notes.splice(noteIndex, 1);
 
     await this.noteFirebaseService.deleteNote(note);
   }
+
+
 }
